@@ -7,12 +7,7 @@ export async function getServerSideProps({ req }) {
     : "http://localhost:3000";
 
   const res = await fetch(`${baseUrl}/api/todos`);
-let todos = [];
-  try {
-    todos = await res.json();
-  } catch (err) {
-    console.error("API did not return JSON", err);
-  }
+const todos = await res.json();
 
   return { props: { todos } };
 }
