@@ -20,7 +20,7 @@ export default function HomePage({ todos }) {
 
       <ul className="space-y-3">
         {todos.map(todo => (
-          <TodoItem key={todo.id} todo={todo} className="text-blue-600"/>
+          <TodoItem key={todo.id} todo={todo}/>
         ))}
       </ul>
     </main>
