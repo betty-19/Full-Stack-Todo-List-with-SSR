@@ -3,11 +3,16 @@ import TodoItem from "../components/TodoItem";
 
 export async function getServerSideProps({ req }) {
   const baseUrl = process.env.VERCEL_URL 
-    ? `https://${process.env.VERCEL_URL}` // Vercel sets this automatically
+    ? `https://${process.env.VERCEL_URL}` 
     : "http://localhost:3000";
 
   const res = await fetch(`${baseUrl}/api/todos`);
-  const todos = await res.json();
+let todos = [];
+  try {
+    todos = await res.json();
+  } catch (err) {
+    console.error("API did not return JSON", err);
+  }
 
   return { props: { todos } };
 }
