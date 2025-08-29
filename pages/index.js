@@ -1,17 +1,16 @@
 import Link from "next/link";
 import TodoItem from "../components/TodoItem";
 
-export async function getServerSideProps({ req }) {
-  const baseUrl = process.env.VERCEL_URL 
-    ? `https://${process.env.VERCEL_URL}` 
-    : "http://localhost:3000";
+export async function getServerSideProps(context) {
+  // const res = await fetch(`http://localhost:3000/api/todos`);
+const baseUrl = context.req ? `http://${context.req.headers.host}` : '';
+const res = await fetch(`${baseUrl}/api/todos`);
 
-  const res = await fetch(`${baseUrl}/api/todos`);
-const todos = await res.json();
+
+  const todos = await res.json();
 
   return { props: { todos } };
 }
-
 
 export default function HomePage({ todos }) {
   return (
