@@ -41,8 +41,8 @@ export default function TodoDetail() {
         Completed
       </label>
       <div className="flex space-x-4">
-        <button onClick={handleUpdate} className="bg-green-600 text-white px-4 py-2 rounded">Update</button>
-        <button onClick={handleDelete} className="bg-red-600 text-white px-4 py-2 rounded">Delete</button>
+        <button onClick={handleUpdate} className="bg-green-600 text-white px-4 py-2 rounded cursor-pointer">Update</button>
+        <button onClick={handleDelete} className="bg-red-600 text-white px-4 py-2 rounded-pointer">Delete</button>
       </div>
     </div>
   );
